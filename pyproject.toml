@@ -1,0 +1,32 @@
+[project]
+name = "mcpmini"
+version = "0.1.0"
+description = "最小 MCP (Model Context Protocol) 实现骨架：Server + Client + LLM Agent"
+readme = "README.md"
+authors = [
+    { name = "YaqiChen", email = "terrence.yaqi.chen@u.nus.edu" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=2.3.0",
+]
+
+[project.scripts]
+mcpmini-server = "mcpmini.server:main"
+mcpmini-client = "mcpmini.client:main"
+mcpmini-agent = "mcpmini.agent:main"
+
+[dependency-groups]
+dev = [
+    "anyio>=4.15.1",
+    "pytest>=8.0",
+    "pytest-asyncio>=1.4.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
